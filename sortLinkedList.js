@@ -13,6 +13,45 @@ function createList() {
     return list;
 }
 
+function mergeSort(left, right) {
+    let result = new LinkedList();
+
+    let resultPointer = result.head;
+    let pointerLeft = left;
+    let pointerRight = right;
+    // If true then add left most node value in result, increment left pointer else do the same to right linked list, this loop will execute until pointers of either a left or right node equals null
+    console.log('left', pointerLeft, 'right', pointerRight)
+    while (pointerLeft && pointerRight) {
+        let tempNode = null;
+
+        if (pointerLeft.value > pointerRight.value) {
+            tempNode = pointerRight.value;
+            pointerRight = pointerRight.next;
+        } else {
+            tempNode = pointerLeft.value;
+            pointerLeft = pointerLeft.next;
+        }
+        console.log("tempNode", tempNode);
+        if (result.head == null) {
+            result.insertFirst(tempNode);
+            resultPointer = result.head;
+            // console.log("pointer", resultPointer)
+        } else {
+            result.insertLast(tempNode);
+            resultPointer = resultPointer.next;
+        }
+    }
+
+    // Add the remaining elements in the last of resultant linked list
+    resultPointer.next = pointerLeft;
+    while (resultPointer.next) {
+        resultPointer = resultPointer.next;
+        resultPointer.next = pointerRight;
+    }
+
+    return result.head;
+}
+
 function sortList(list) {
     if (list.next === null) {
         return list;
@@ -23,7 +62,6 @@ function sortList(list) {
     let left = list;
     let leftPointer = list.head;
     let right = null;
-    let rightPointer = null;
 
     // count the nodes
     while (countList.next !== null) {
@@ -42,23 +80,14 @@ function sortList(list) {
         leftPointer = leftPointer.next;
     }
     right = new LinkedList();
+
     while (leftPointer.next) {
         right.insertLast(leftPointer.next.value);
         leftPointer = leftPointer.next;
+        left.remove(leftPointer.value);
     }
-    leftPointer.next = null;
-
-    console.log('left', left, 'right', right);
-    function display(list) {
-        let current = list.head;
-    
-        while (current !== null) {
-            console.log(current.value);
-            current = current.next;
-        }
-    }
-    display(left);
-    // display(right);
+console.log(sortList(left));
+    // return mergeSort(sortList(left), sortList(right.head))
 }
 
 console.log(sortList(createList()));
