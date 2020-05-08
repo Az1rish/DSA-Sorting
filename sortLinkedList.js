@@ -86,7 +86,7 @@ function sortList(list) {
         leftPointer = leftPointer.next;
         left.remove(leftPointer.value);
     }
-console.log(sortList(left));
+console.log('left', left, 'right', right);
     // return mergeSort(sortList(left), sortList(right.head))
 }
 
