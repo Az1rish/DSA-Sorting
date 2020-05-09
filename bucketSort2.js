@@ -67,7 +67,7 @@ function insertionSort(array, ticks) {
   
     // Sorting buckets
     array.length = 0;
-    
+    console.log('allBuckets', allBuckets);
     allBuckets.forEach(function(bucket) {
         ticks++;
         insertionSort(bucket, ticks);
