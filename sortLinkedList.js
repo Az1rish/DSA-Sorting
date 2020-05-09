@@ -20,7 +20,7 @@ function mergeSort(left, right) {
     let pointerLeft = left;
     let pointerRight = right;
     // If true then add left most node value in result, increment left pointer else do the same to right linked list, this loop will execute until pointers of either a left or right node equals null
-    console.log('left', pointerLeft, 'right', pointerRight)
+    // console.log('left', pointerLeft, 'right', pointerRight)
     while (pointerLeft && pointerRight) {
         let tempNode = null;
 
@@ -31,7 +31,7 @@ function mergeSort(left, right) {
             tempNode = pointerLeft.value;
             pointerLeft = pointerLeft.next;
         }
-        console.log("tempNode", tempNode);
+        // console.log("tempNode", tempNode);
         if (result.head == null) {
             result.insertFirst(tempNode);
             resultPointer = result.head;
@@ -62,7 +62,7 @@ function sortList(list) {
     let left = list;
     let leftPointer = list.head;
     let right = null;
-
+// console.log(countList)
     // count the nodes
     while (countList.next !== null) {
         count++;
@@ -86,8 +86,9 @@ function sortList(list) {
         leftPointer = leftPointer.next;
         left.remove(leftPointer.value);
     }
-console.log('left', left, 'right', right);
-    // return mergeSort(sortList(left), sortList(right.head))
+console.log('left', sortList(left), 'right', sortList(right));
+
+    // return mergeSort(sortList(left), sortList(right))
 }
 
 console.log(sortList(createList()));
