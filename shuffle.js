@@ -11,7 +11,7 @@ function shuffle(arr) {
 // You were supposed to do it in place, now do it without creating a new array!!!
 
 function shuffle2(arr) {
-    for (let i = arr.length - 1; i > 0; i--) {
+    for (let i = 0; i < arr.length; i++) {
         let j = Math.floor(Math.random() * i);
         let curr = arr[i];
         arr[i] = arr[j];
